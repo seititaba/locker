@@ -7,7 +7,7 @@ At first, we will develope ours system using an Arduino UNO for prototyping. For
 
 ## Getting Started
 
-To get a copy of locker repository use:
+To get a copy of locker repository and contribute to this project, use:
 
 * For HTTPS:
 ```
@@ -17,6 +17,9 @@ git clone https://github.com/seititaba/locker.git
 ```
 git clone git@github.com:seititaba/locker.git
 ```
+
+Or just for fun:
+* Direct download from [project repository](https://github.com/seititaba/locker/archive/master.zip) and extract files. Have Fun!
 
 
 ### Prerequisites
@@ -30,22 +33,26 @@ For Arduino:
 * Motor drive board (we used ULN2003)
 
 For Raspberry PI:
-* TODO
+* TODO#
 
 
 ### Installing
 
-* TODO
+* TODO#
 
 
 ## Running the tests
 
-* TODO
+For unit tests:
+* Load *.ino file in Arduino IDE and add *.h and *.cpp files
+
+For unit tests from worktree:
+* TODO#
 
 
 ## Built With
 
-* [Arduino IDE](https://www.arduino.cc/) - The IDE used
+* [Arduino IDE](https://www.arduino.cc/en/Main/Software) - The IDE used
 
 
 ## Authors
