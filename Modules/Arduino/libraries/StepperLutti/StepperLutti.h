@@ -1,5 +1,7 @@
 /*
- * StepperLutti.h - StepperLutti library for Wiring/Arduino - Version 2.0
+ * @file StepperLutti.h
+ * @brief StepperLutti library for Wiring/Arduino - Version 2.0
+ * @author Lucas Seiti Taba
  *
  * Original library             (0.1)   by Tom Igoe.
  * Two-wire modifications       (0.2)   by Sebastian Gassner
@@ -23,56 +25,42 @@
  * http://www.arduino.cc/en/Tutorial/Stepper
  * 
  * WARNING: THIS WILL NOT WORK PROPERLY WITH ANY KIND OF DELAY FUNCTIONS!!
+ * 
  */
 
 #ifndef StepperLutti_h
 #define StepperLutti_h
 
-/* @brief class for a bipolar phase stepper motor
-/* A class modified from Stepper.h, that allows to use mode than one step motor simutaneosly.
-/* @author Lucas Seiti Taba */
+s
+/* @class StepperLutti
+ * @brief Defines a stepper motor
+ * @param steps_per_revolution
+ * @param motor_pin_1
+ * @param motor_pin_2
+ * @param motor_pin_3
+ * @param motor_pin_4
+ *  
+ */ 
 
 class StepperLutti
 {
   public:
 
-    /* @brief class constructor
-    /* Class take steps per revolution and motor pins as input
-    /* @author Lucas Seiti Taba */
-
     StepperLutti(int steps_per_revolution, int motor_pin_1, int motor_pin_2,
                                  int motor_pin_3, int motor_pin_4);
 
-    /* @brief method for set motor speed
-    /* Speed given in RPM. It is used to calculate step_delay.
-    /* @author Lucas Seiti Taba */
 
     void setSpeed(long motor_speed);
 
-    /* @brief method for move X steps
-    /* @author Lucas Seiti Taba */
-
     void step(int steps);
 
-    /* @brief method for get current steps left
-    /* Return steps_left
-    /* @author Lucas Seiti Taba */
-
     int getStepsLeft(void);
-
-    /* @brief method for get current version
-    /* Return version
-    /* @author Lucas Seiti Taba */
 
     int getVersion(void);
 
   private:
 
     void stepMotor(int this_step);
-
-    /* @brief motor variables
-    /* Variables of direction, current step, numer of steps per revolution, and delay per step.
-    /* @author Lucas Seiti Taba */
 
     int direction;            // Direction of rotation
     unsigned long step_delay; // delay between steps, in ms, based on speed
@@ -81,16 +69,10 @@ class StepperLutti
     int current_step;          // current step
     int steps_left;
 
-    /* @brief physical motors pins
-    /* @author Lucas Seiti Taba */
-
     int motor_pin_1;
     int motor_pin_2;
     int motor_pin_3;
     int motor_pin_4;
-
-    /* @brief timestamp in us of when the last step was taken
-    /* @author Lucas Seiti Taba */
 
     unsigned long last_step_time;
 };

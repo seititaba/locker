@@ -1,5 +1,7 @@
 /*
- * StepperLutti.h - StepperLutti library for Wiring/Arduino - Version 2.0
+ * @file StepperLutti.cpp
+ * @brief StepperLutti library for Wiring/Arduino - Version 2.0
+ * @author Lucas Seiti Taba
  *
  * Original library             (0.1)   by Tom Igoe.
  * Two-wire modifications       (0.2)   by Sebastian Gassner
@@ -23,14 +25,11 @@
  * http://www.arduino.cc/en/Tutorial/Stepper
  * 
  * WARNING: THIS WILL NOT WORK PROPERLY WITH ANY KIND OF DELAY FUNCTIONS!!
+ * 
  */
 
 #include "Arduino.h"
-#include "../src/StepperLutti.h"
-
-/* @brief StepperLutti class constructor
-/* It takes the number of steps and motor pins.
-/* @author Lucas Seiti Taba */
+#include "StepperLutti.h"
 
 StepperLutti::StepperLutti(int steps_per_revolution, int motor_pin_1, int motor_pin_2,
                                       int motor_pin_3, int motor_pin_4)
@@ -47,8 +46,6 @@ StepperLutti::StepperLutti(int steps_per_revolution, int motor_pin_1, int motor_
     this->motor_pin_3 = motor_pin_3;
     this->motor_pin_4 = motor_pin_4;
 
-    /* @brief Arduino pinout setup
-    /* @author Lucas Seiti Taba */
 
     pinMode(this->motor_pin_1, OUTPUT);
     pinMode(this->motor_pin_2, OUTPUT);
@@ -62,21 +59,12 @@ int StepperLutti::getStepsLeft(void)
     return this->steps_left;
 }
 
-/* @brif sets the speed in revs per minute
- * Converts input (in RPM) to millis
-/* @author Lucas Seiti Taba */
 
 void StepperLutti::setSpeed(long motor_speed)
 {
   this->step_delay = 60L * 1000L * 1000L / this->steps_per_revolution / motor_speed;
 }
 
-/* @brief method to move motor
-/* Moves the motor steps_to_move steps.  If the number is negative,
-/* the motor moves in the reverse direction.
-/* Note: This method take advantage of Arduino loop to work properly
-/* and give a pseudo parallelism. DO NOT USE WITH OTHER DELAY FUNCTIONS!
-/* @author Lucas Seiti Taba*/
 
 void StepperLutti::step(int steps_to_move)
 {
@@ -162,7 +150,7 @@ void StepperLutti::stepMotor(int thisStep)
 /*
   version() returns the version of the library:
 */
-int StepperLutti::version(void)
+int StepperLutti::getVersion(void)
 {
   return 6;
 }
