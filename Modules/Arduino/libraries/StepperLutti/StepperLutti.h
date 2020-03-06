@@ -1,16 +1,9 @@
-/*
+/**
  * @file StepperLutti.h
- * @brief StepperLutti library for Wiring/Arduino - Version 2.0
+ * @brief StepperLutti library
+ * Control 4 wired bipolar stepper motor
  * @author Lucas Seiti Taba
- *
- * Original library             (0.1)   by Tom Igoe.
- * Two-wire modifications       (0.2)   by Sebastian Gassner
- * Combination version          (0.3)   by Tom Igoe and David Mellis
- * Bug fix for four-wire        (0.4)   by Tom Igoe, bug fix from Noah Shibley
- * High-speed stepping mod              by Eugene Kozlenko
- * Timer rollover fix                   by Eugene Kozlenko
- * Five phase five wire         (1.1.0) by Ryan Orendorff
- * Refactored version for Lutti (2.0)   by Lucas Seiti Taba
+ * @date 06 march 2020
  *
  * The sequence of control signals for 4 control wires is as follows:
  *
@@ -25,21 +18,21 @@
  * http://www.arduino.cc/en/Tutorial/Stepper
  * 
  * WARNING: THIS WILL NOT WORK PROPERLY WITH ANY KIND OF DELAY FUNCTIONS!!
+ * DONT EVEN TRY IT!!
  * 
  */
 
-#ifndef StepperLutti_h
-#define StepperLutti_h
+#ifndef _STEPPERLUTTI_H
+#define _STEPPERLUTTI_H
 
-s
-/* @class StepperLutti
+/**
+ * @class StepperLutti
  * @brief Defines a stepper motor
  * @param steps_per_revolution
  * @param motor_pin_1
  * @param motor_pin_2
  * @param motor_pin_3
  * @param motor_pin_4
- *  
  */ 
 
 class StepperLutti
