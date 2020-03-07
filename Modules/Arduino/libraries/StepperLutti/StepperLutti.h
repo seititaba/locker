@@ -1,73 +1,58 @@
 /**
- * @file StepperLutti.h
- * @brief StepperLutti library
- * Control 4 wired bipolar stepper motor
+ * @file StepperLutti.h 
+ * @brief A Stepper class that allows to control multiple step motors simultaneosly.
+ * This class is suited for 4 wires bipolar step motors, and give the proper interfaces
+ * for make them spin clockwise or counterclockwise.
  * @author Lucas Seiti Taba
- * @date 06 march 2020
- *
- * The sequence of control signals for 4 control wires is as follows:
- *
- * Step C0 C1 C2 C3
- *    1  1  0  1  0
- *    2  0  1  1  0
- *    3  0  1  0  1
- *    4  1  0  0  1
- *
- * The circuits can be found at
- *
- * http://www.arduino.cc/en/Tutorial/Stepper
- * 
- * WARNING: THIS WILL NOT WORK PROPERLY WITH ANY KIND OF DELAY FUNCTIONS!!
- * DONT EVEN TRY IT!!
+ * @date 07 Mar 2020
  * 
  */
 
 #ifndef _STEPPERLUTTI_H
 #define _STEPPERLUTTI_H
 
+#include "StepperMotor.h"
+
 /**
  * @class StepperLutti
- * @brief Defines a stepper motor
- * @param steps_per_revolution
- * @param motor_pin_1
- * @param motor_pin_2
- * @param motor_pin_3
- * @param motor_pin_4
- */ 
-
+ * @brief Gives basic motor control such as rotation direction, start/stop control, and
+ * speed control
+ * @param pin_1 coil Blue
+ * @param pin_2 coil Pink
+ * @param pin_3 coil Yellow
+ * @param pin_4 coil Orange
+ */
 class StepperLutti
 {
-  public:
+    public:
 
-    StepperLutti(int steps_per_revolution, int motor_pin_1, int motor_pin_2,
-                                 int motor_pin_3, int motor_pin_4);
+    StepperLutti(int pin_1, int pin_2, int pin_3, int pin_4);
+    ~StepperLutti();
 
+    /**
+     * @brief Motor rotates in clockwise direction until it reaches max_step (end of run)
+     * or when it is commanded to (stop command)
+     */
+    void clockWise();
 
-    void setSpeed(long motor_speed);
+    /**
+     * @brief Motor rotates in counter-clockwise direction until it reaches max_step (end
+     * of run) or when it is commanded to (stop command)
+     */
+    void counterClockWise();
 
-    void step(int steps);
+    void startMotor();
+    void stopMotor();
+    void setStepperSpeed(unsigned long speed); // RPM
+    void setMaxStep(int max_step);
 
-    int getStepsLeft(void);
+    private:
 
-    int getVersion(void);
-
-  private:
-
-    void stepMotor(int this_step);
-
-    int direction;            // Direction of rotation
-    unsigned long step_delay; // delay between steps, in ms, based on speed
-    int steps_per_revolution;      // total number of steps this motor can take
-    //int pin_count;            // how many pins are in use.
-    int current_step;          // current step
-    int steps_left;
-
-    int motor_pin_1;
-    int motor_pin_2;
-    int motor_pin_3;
-    int motor_pin_4;
-
-    unsigned long last_step_time;
+    int start_motor;
+    unsigned long step_delay;
+    unsigned long old_step_delay;
+    int current_step;
+    int max_step;
+    StepperMotor motor;    
 };
-
 #endif
