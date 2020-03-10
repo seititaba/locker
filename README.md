@@ -2,7 +2,9 @@
 
 A locker is the name of a system that is used to control water flow. For lack of better naming, it will be used as a alias to "eclusa" (portuguese). The locker will control personal flow in and out from our shop.
 
-At first, we will develope ours system using an Arduino UNO for prototyping. For future work, it will be developed a Raspberry PI version, that will be the first release.
+The first verion has two slide doors, room light, QRCode reading indicators, and logo light. It is controlled by an Arduino UNO and a Web interface. It's uses php to call python and send commands over serial COM to UNO.
+
+This was the very first prototype. And for future work, it will be developed a new version with Raspberry PI, and 3D printed parts.
 
 
 ## Getting Started
@@ -45,6 +47,12 @@ For Raspberry PI:
 
 For unit tests:
 * Load *.ino file in Arduino IDE and add *.h and *.cpp files
+* You can use *.py files in /Tools to get serial COM. **/Tools/SerialCmdLight.py**. Execute it with inputs: 
+```
+python SerialCmdLight.py <serial COM> <logo, room, entry, exit> <on, off>
+```
+
+Note: Current project .ino is in **"/Modules/Arduino/libraries/LightLutti/LighLitty.ino"**
 
 For unit tests from worktree:
 * TODO#

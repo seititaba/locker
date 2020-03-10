@@ -1,35 +1,40 @@
 /**
- * @file DoorLutti.h
- * @brief Use class stepper to control make a door
+ * @file LockerLutti.h
+ * @brief A implementation of a locker. It user two step motors to achieve it's goal.
+ * By design, both doors could work simultaneosly as it were two different process. 
+ * Howeber, it's just a simulation.
+ * NOTE - DO NOT USE THIS LIB WITH ANY KIND OF delay() FUNCTIONS. IT WILL NOT work
+ * PROPERLY!
  * @author Lucas Seiti Taba
- * @date 06 Mar 2020
- */
+ * @date 08 Mar 2020
+ * 
+ */ 
 
-#include "Arduino.h"
+#ifndef _LOCKERLUTTI_H
+#define _LOCKERLUTTI_H
+
 #include "StepperLutti.h"
 
-/**
- * @class DoorLutti
- */
-class LockerLutti : public StepperLutti
+class LockerLutti
 {
     public:
 
-    LockerLutti();
+    LockerLutti(int pin_1, int pin_2, int pin_3, int pin_4, int pin_5, int pin_6, int pin_7, int pin_8);
     ~LockerLutti();
-
-    void openEntry();
-    void stopEntry();
-    void resumeEntry();
-    void closeEntry();
-    void openExit();
-    void stopExit();
-    void resumeExit();
-    void closeExit();
+    void openEntryDoor();
+    void closeEntryDoor();
+    void openExitDoor();
+    void closeExitDoor();
 
     private:
 
-    char *name;
-    StepperLutti stepper;    
+    StepperLutti entry_door;
+    StepperLutti exit_door;
+
+    int max_steps;
+    int speed;
 
 };
+
+
+#endif
